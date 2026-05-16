@@ -399,6 +399,105 @@ footer a {
   color: var(--color-heading);
 }
 
+/* Small layout tweaks requested by user */
+/* Make header/nav items more spacious */
+.site-header {
+  padding: 0.5rem 0;
+}
+.site-header .container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.site-header .container > .flex {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.site-header .nav-actions a,
+.site-header .nav-actions button {
+  padding: 0.5rem 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Ensure cards have comfortable internal spacing as a fallback */
+.bg-white.p-6, .bg-white.p-8 {
+  padding: 1.5rem !important;
+}
+.bg-white .p-6, .bg-white .p-8 {
+  padding: 1.25rem !important;
+}
+
+@media (max-width: 640px) {
+  .site-header .nav-actions a,
+  .site-header .nav-actions button { padding: 0.45rem 0.6rem; }
+}
+
+/* ================================================================
+   NAVBAR / FOOTER / CARDS — Custom tweaks
+   ================================================================ */
+
+/* Make header prominent and stick to top */
+.site-header {
+  background-color: var(--color-header) !important;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.18) !important;
+  position: sticky;
+  top: 0;
+  z-index: 60;
+}
+.site-header .brand { color: #ffffff; text-decoration: none; }
+.site-header .nav-actions { display: flex; align-items: center; gap: 0.75rem; }
+.site-header a { color: #ffffff !important; }
+.site-header a:hover { color: #c8e6c9 !important; }
+
+/* Ensure footer sits at the bottom when page content is short */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+body > footer {
+  margin-top: auto;
+  width: 100%;
+}
+
+/* Make top-level sections grow to fill available space so footer stays at bottom */
+body > section {
+  flex: 1 0 auto;
+}
+
+/* If templates use a main wrapper, make it fill available space */
+.site-main {
+  flex: 1 0 auto;
+}
+/* Ensure main uses column layout so child sections can expand vertically */
+.site-main {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Let the direct section inside site-main fill remaining space */
+.site-main > section {
+  flex: 1 0 auto;
+}
+
+/* Increase padding inside cards to improve spacing */
+/* Targets common Tailwind padding utility inside card containers */
+.bg-white .p-4 {
+  padding: 1.25rem !important; /* 20px */
+}
+
+/* If a card does not include an internal p-4, ensure it still has comfortable padding */
+.bg-white > :not(.p-4) {
+  padding: 1rem;
+}
+
+/* Small responsive tweak: ensure header compact on small screens */
+@media (max-width: 640px) {
+  .site-header .brand { font-size: 1.125rem; }
+  .site-header .nav-actions a, .site-header .nav-actions button { font-size: 0.95rem; }
+}
+
 /* ================================================================
    STATUS BADGES
    ================================================================ */
