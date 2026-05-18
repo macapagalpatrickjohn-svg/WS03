@@ -1,3 +1,6 @@
-<?php 
-    loadView('Error/404');
+<?php
+
+// echo "404 Not Found";
+loadView('error/error');
+
 ?>
