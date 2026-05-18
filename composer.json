@@ -1,10 +1,10 @@
 {
-    "name": "lushvalera/ws03-php",
-    "description": "Job Listing PHP Project",
+    "name": "macapagalpatrickjohn-svg/WS03",
+    "description": "Work Finder PHP Project",
     "authors": [
         {
-            "name": "Lush Cielo Valera",
-            "email": "lushvalera051527@email.com"
+            "name": "Macapagal,John Patrick",
+            "email": "macapagalpatrickjohn@email.com"
         }
     ],
     "autoload": {

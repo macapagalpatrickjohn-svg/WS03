@@ -21,21 +21,21 @@
    ---------------------------------------------------------------- */
 
 :root {
-  --color-header:       #2e7d32;   /* Header at navigation bar */
-  --color-accent:       #43a047;   /* "Post a Job" button at mga highlight */
-  --color-accent-hover: #2e7d32;   /* Hover state ng accent */
-  --color-page-bg:      #f4f7f4;   /* Background ng buong page */
-  --color-card-bg:      #ffffff;   /* Background ng mga card/box */
-  --color-heading:      #1a2e1a;   /* Kulay ng mga title at heading */
-  --color-body-text:    #2d3d2d;   /* Regular na body text */
-  --color-link:         #2e7d32;   /* Mga clickable na links */
-  --color-link-hover:   #1b5e20;   /* Hover state ng links */
-  --color-tag-bg:       #c8e6c9;   /* Background ng mga tag/badge */
-  --color-tag-text:     #1b5e20;   /* Text ng mga tag/badge */
-  --color-footer:       #1a2e1a;   /* Footer background */
-  --color-footer-text:  #a5d6a7;   /* Footer text */
-  --color-border:       #c8e6c9;   /* Border ng mga element */
-  --showcase-overlay:   rgba(0, 0, 0, 0.35); /* Hero banner overlay */
+  --color-header:       #0f2b4d;              /* Header / navigation bar — Navy Deep */
+  --color-accent:       #e87722;              /* "Post a Job" button at mga highlight — Ember Orange */
+  --color-accent-hover: #c45e0d;              /* Hover state ng accent — Ember Deep */
+  --color-page-bg:      #f5f7fa;              /* Background ng buong page — Cloud White */
+  --color-card-bg:      #ffffff;              /* Background ng mga card/box — Pure White */
+  --color-heading:      #1e3a5c;              /* Kulay ng mga title at heading — Ink Blue */
+  --color-body-text:    #344a63;              /* Regular na body text — Slate */
+  --color-link:         #1557a0;              /* Mga clickable na links — Sapphire */
+  --color-link-hover:   #0d3d75;              /* Hover state ng links — Sapphire Deep */
+  --color-tag-bg:       #ddeaf8;              /* Background ng mga tag/badge — Sky Tint */
+  --color-tag-text:     #1557a0;              /* Text ng mga tag/badge — Sapphire */
+  --color-footer:       #0f2b4d;              /* Footer background — Navy Deep */
+  --color-footer-text:  #7bafd4;              /* Footer text — Mist Blue */
+  --color-border:       #e8edf3;              /* Border ng mga element — Silver Mist */
+  --showcase-overlay:   rgba(15, 43, 77, 0.40); /* Hero banner overlay — Navy Veil */
 }
 
 
