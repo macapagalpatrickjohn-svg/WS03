@@ -23,4 +23,5 @@
 
     // Logout
     $router->post('/logout', 'UserController@logout', ['auth']);
+    
 ?>
