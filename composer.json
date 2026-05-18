@@ -1,0 +1,16 @@
+{
+    "name": "macapagalpatrickjohn-svg/ws03",
+    "description": "WorkFinder",
+    "authors": [
+        {
+            "name": "Macapagal, John Patrick A.",
+            "email": "macapagalpatrickjohn@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+             "Framework\\": "Framework/",
+            "App\\": "App/"
+        }
+    }
+}

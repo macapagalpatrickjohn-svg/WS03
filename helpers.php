@@ -11,8 +11,15 @@
      * 
      */
 
-    function loadView($name) {
-        require basePath('views/' . $name . '.view.php');
+    function loadView($name, $data = []) {
+        $viewPath = basePath('App/views/' . $name . '.view.php');
+        if (file_exists($viewPath)) {
+            extract($data);
+            require $viewPath;
+        } else {
+            die("View not found: " . $name);
+        }
+        // require basePath('views/' . $name . '.view.php');
     }
 
     /**
@@ -24,7 +31,7 @@
      */
 
     function loadPartial($name) {
-        $partialPath = basePath('views/Partials/' . $name . '.php');
+        $partialPath = basePath('App/views/Partials/' . $name . '.php');
         if (file_exists($partialPath)) {
             require $partialPath;
         } else {
@@ -37,5 +44,9 @@
         echo '<pre>';
         var_dump($value);
         echo '</pre>';
+    }
+
+    function formatSalary($salary) {
+        return '$' . number_format(floatval($salary));
     }
 ?>
