@@ -13,6 +13,8 @@
         public function handle($middleware) {
             Session::start();
 
+
+            
             $user = Session::get('user');
 
             if ($middleware === 'auth') {
