@@ -19,15 +19,13 @@
 
             if ($middleware === 'auth') {
                 if ($user === null) {
-                    header('Location: /login');
-                    exit;
+                    redirect('/login');
                 }
             }
 
             if ($middleware === 'guest') {
                 if ($user !== null) {
-                    header('Location: /');
-                    exit;
+                    redirect('/');
                 }
             }
         }

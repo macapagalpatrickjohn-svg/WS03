@@ -8,7 +8,7 @@
 
     <?php loadPartial('errors', ['errors' => $errors ?? []]); ?>
 
-    <form method="POST" action="/listings/<?= $listing->id ?>">
+    <form method="POST" action="<?= appRoot() ?>/listings/<?= $listing->id ?>">
       <input type="hidden" name="_method" value="PUT">
 
       <!-- Job Info -->
@@ -103,7 +103,7 @@
           class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
           Save Changes
         </button>
-        <a href="/listings/<?= $listing->id ?>"
+        <a href="<?= appRoot() ?>/listings/<?= $listing->id ?>"
           class="block text-center text-gray-500 mt-4">
           Cancel
         </a>

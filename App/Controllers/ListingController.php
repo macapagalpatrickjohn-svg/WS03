@@ -10,6 +10,7 @@
         protected $db;
 
         public function __construct() {
+            Session::start();
             $config = require basePath('config/db.php');
             $this->db = new Database($config);
         }
@@ -22,7 +23,77 @@
                 "SELECT * FROM listings ORDER BY created_at DESC"
             )->fetchAll();
 
+            if (empty($listings)) {
+                $this->ensureDemoData();
+                $listings = $this->db->Query(
+                    "SELECT * FROM listings ORDER BY created_at DESC"
+                )->fetchAll();
+            }
+
             loadView('Listings/index', ['listings' => $listings]);
+        }
+
+        /**
+         * Seed demo data when no listings exist
+         */
+        protected function ensureDemoData() {
+            $demoEmail = 'demo@jobseeker.test';
+            $user = $this->db->Query(
+                "SELECT * FROM users WHERE email = :email",
+                ['email' => $demoEmail]
+            )->fetch();
+
+            if (!$user) {
+                $this->db->Query(
+                    "INSERT INTO users (name, email, city, state, password)
+                    VALUES (:name, :email, :city, :state, :password)",
+                    [
+                        'name' => 'Demo Employer',
+                        'email' => $demoEmail,
+                        'city' => 'Austin',
+                        'state' => 'TX',
+                        'password' => password_hash('demo1234', PASSWORD_DEFAULT)
+                    ]
+                );
+
+                $userId = $this->db->conn->lastInsertId();
+            } else {
+                $userId = $user->id;
+            }
+
+            $this->db->Query(
+                "INSERT INTO listings (user_id, title, description, salary, tags, company, address, city, state, phone, email, requirements, benefits)
+                VALUES
+                (:user_id, :title1, :description1, :salary1, :tags1, :company1, :address1, :city1, :state1, :phone1, :email1, :requirements1, :benefits1),
+                (:user_id, :title2, :description2, :salary2, :tags2, :company2, :address2, :city2, :state2, :phone2, :email2, :requirements2, :benefits2)",
+                [
+                    'user_id' => $userId,
+                    'title1' => 'Full Stack Developer',
+                    'description1' => 'Build modern web applications using PHP, JavaScript, and cloud APIs.',
+                    'salary1' => '95000.00',
+                    'tags1' => 'PHP,JavaScript,Remote',
+                    'company1' => 'TechWave',
+                    'address1' => '123 Main St',
+                    'city1' => 'Austin',
+                    'state1' => 'TX',
+                    'phone1' => '512-555-0101',
+                    'email1' => 'jobs@techwave.test',
+                    'requirements1' => '3+ years PHP experience, ability to write clean code.',
+                    'benefits1' => 'Remote friendly, health insurance, paid time off.',
+                    'title2' => 'Product Designer',
+                    'description2' => 'Design intuitive user experiences for web and mobile products.',
+                    'salary2' => '85000.00',
+                    'tags2' => 'Design,UI/UX,Remote',
+                    'company2' => 'BrightApps',
+                    'address2' => '789 Oak Ave',
+                    'city2' => 'Austin',
+                    'state2' => 'TX',
+                    'phone2' => '512-555-0202',
+                    'email2' => 'careers@brightapps.test',
+                    'requirements2' => 'Portfolio required, strong communication skills.',
+                    'benefits2' => 'Flexible schedule, equity options.'
+                ]
+            );
         }
 
         /**
@@ -66,7 +137,13 @@
                 array_flip($allowedFields)
             );
 
-            $newListingData['user_id'] = Session::get('user')['id'];
+            $sessionUser = Session::get('user');
+            if ($sessionUser === null || !isset($sessionUser['id'])) {
+                Session::setFlashMessage('error_message', 'You must be logged in to post a job.');
+                redirect('/login');
+            }
+
+            $newListingData['user_id'] = $sessionUser['id'];
 
             foreach ($newListingData as $field => $value) {
                 if ($value === '') {

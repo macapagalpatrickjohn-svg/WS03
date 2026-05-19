@@ -3,6 +3,11 @@
         return BASE_PATH . '/' . $path;
     }
 
+    function appRoot(): string {
+        $basePath = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
+        return $basePath === '/' ? '' : $basePath;
+    }
+
     function loadView($name, $data = []) {
         $viewPath = basePath('app/Views/' . $name . '.view.php');
         if (file_exists($viewPath)) {
@@ -45,8 +50,13 @@
     }
 
     function redirect($url) {
+        if (strpos($url, '/') === 0 && strpos($url, '://') === false) {
+            $url = appRoot() . $url;
+        }
+
         header("Location: {$url}");
         exit();
     }
+    
     
 ?>

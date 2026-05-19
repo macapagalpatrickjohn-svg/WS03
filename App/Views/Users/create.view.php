@@ -7,7 +7,7 @@
 
     <?php loadPartial('errors', ['errors' => $errors ?? []]); ?>
 
-    <form method="POST" action="/register">
+    <form method="POST" action="<?= appRoot() ?>/register">
       <div class="mb-4">
         <label class="block text-gray-700 font-bold mb-2">Full Name</label>
         <input type="text" name="name"
@@ -61,7 +61,7 @@
 
       <p class="mt-4 text-center">
         Already have an account?
-        <a href="/login" class="text-green-500 hover:underline">Login</a>
+        <a href="<?= appRoot() ?>/login" class="text-white hover:underline">Login</a>
       </p>
     </form>
   </div>
