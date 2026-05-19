@@ -1,0 +1,17 @@
+{
+    "name": "macapagalpatrickjohn-svg/WS03",
+    "description": "Work Finder PHP Project",
+    "authors": [
+        {
+            "name": "Macapagal, John Patrick",
+            "email": "macapagalpatrickjohn@email.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Framework\\": "framework/",
+            "Framework\\Middleware\\": "framework/Middleware/",
+            "App\\": "app/"
+        }
+    }
+}
